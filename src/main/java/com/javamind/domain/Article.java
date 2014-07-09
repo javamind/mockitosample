@@ -1,5 +1,7 @@
 package com.javamind.domain;
 
+import java.util.Date;
+
 /**
  *On gere des articles dans cet exemple
  *

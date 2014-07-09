@@ -7,11 +7,11 @@ import com.javamind.domain.Article;
  *
  * @author EHRET_G
  */
-public interface MonServiceMetier {
+public interface BlogArticleService {
     /**
      * Execution d'un traitement
      */
-    void execute();
+    boolean write(String title, String content);
 
     /**
      * Verification d'un article
