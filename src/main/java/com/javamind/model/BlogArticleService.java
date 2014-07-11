@@ -19,4 +19,5 @@ public interface BlogArticleService {
      * @return
      */
     boolean checkArticle(Article article);
+
 }

@@ -32,7 +32,7 @@ public class BlogArticleServiceImplCas3Test {
     @Test
     public void writeArticleShouldPublishAndBroadCast(){
         //On prepare le mock
-        given(mockElogExporterService.socialBroadcast(any(Article.class))).willReturn(3);
+        //given(mockElogExporterService.socialBroadcast(any(Article.class))).willReturn(3);
         //On appelle notre classe
         assertThat(blogArticleService.write("title", "my new content")).isEqualTo(true);
     }

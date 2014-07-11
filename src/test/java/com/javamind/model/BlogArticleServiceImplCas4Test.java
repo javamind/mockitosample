@@ -3,10 +3,12 @@ package com.javamind.model;
 import com.javamind.domain.Article;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.Spy;
+import org.mockito.runners.MockitoJUnitRunner;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.BDDMockito.given;
@@ -20,17 +22,13 @@ import static org.mockito.Mockito.verifyZeroInteractions;
  * en utilisant les spy
  * @author EHRET_G
  */
+@RunWith(MockitoJUnitRunner.class)
 public class BlogArticleServiceImplCas4Test {
     @InjectMocks
     @Spy
     private BlogArticleService blogArticleService = new BlogArticleServiceImpl();
     @Mock
     private BlogExporterService mockElogExporterService;
-
-    @Before
-    public void setUp(){
-        MockitoAnnotations.initMocks(this);
-    }
 
     @Test
     public void writeArticleShouldNotPublishAndBroadCastWhenCheckFailed(){

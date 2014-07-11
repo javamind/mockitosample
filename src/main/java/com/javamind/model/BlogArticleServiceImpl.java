@@ -17,7 +17,10 @@ import java.util.Date;
 public class BlogArticleServiceImpl implements BlogArticleService{
 
     @Autowired
-    BlogExporterService blogExporterService;
+    private BlogExporterService blogExporterService;
+
+    @Autowired
+    private DefaultMessagerServiceImpl messagerService;
 
     @Override
     public boolean write(String title, String content) {
@@ -30,6 +33,9 @@ public class BlogArticleServiceImpl implements BlogArticleService{
             try{
                 blogExporterService.publish(article);
                 blogExporterService.socialBroadcast(article);
+                if(messagerService!=null){
+                    return messagerService.isRunning();
+                }
                 return true;
             }
             catch(PublicationException e){
@@ -47,5 +53,10 @@ public class BlogArticleServiceImpl implements BlogArticleService{
     @VisibleForTesting
     protected void setBlogExporterService(BlogExporterService blogExporterService) {
         this.blogExporterService = blogExporterService;
+    }
+
+    @VisibleForTesting
+    protected void setMessagerService(DefaultMessagerServiceImpl messagerService) {
+        this.messagerService = messagerService;
     }
 }
